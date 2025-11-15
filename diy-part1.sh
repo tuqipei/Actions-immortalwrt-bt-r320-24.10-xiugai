@@ -41,7 +41,11 @@ VERSION=$(grep "PRETTY_NAME=" package/base-files/files/usr/lib/os-release | cut 
 
 #sed -i '/^exit 0$/i sed -i "s,OPENWRT_RELEASE=.*, ${VERSION} 编译日期：${date_version}  by 微信:Mr___zjz  ,g" package/base-files/files/usr/lib/os-release' package/emortal/default-settings/files/99-default-settings-chinese
 sed -i '/^exit 0$/i sed -i "s,OPENWRT_RELEASE=.*,'"${VERSION}"' 编译日期：'"${date_version}"'  by 微信:Mr___zjz  ,g" package/base-files/files/usr/lib/os-release' \package/emortal/default-settings/files/99-default-settings-chinese
-
+CFG_FILE="./package/base-files/files/bin/config_generate"
+#修改默认IP地址
+#sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $CFG_FILE
+#修改默认主机名
+sed -i "s/hostname='.*'/hostname='OpenWrt'/g" $CFG_FILE
 
 #安装和更新软件包
 UPDATE_PACKAGE() {
