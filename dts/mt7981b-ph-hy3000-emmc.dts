@@ -8,7 +8,7 @@
 #include "mt7981.dtsi"
 
 / {
-	model = "ph-hy3000 eMMC bootstrap versions";
+	model = "Philips HY3000";
 	compatible = "ph,hy3000-emmc", "mediatek,mt7981";
 
 	aliases {
