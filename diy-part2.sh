@@ -59,6 +59,7 @@ sed -i 's|IMG_PREFIX:=|IMG_PREFIX:=$(shell TZ="Asia/Shanghai" date +"%Y%m%d")-24
 cp -f "$GITHUB_WORKSPACE/dts/filogic.mk" "/target/linux/mediatek/image/filogic.mk"
 cp -f "$GITHUB_WORKSPACE/dts/mt7981b-ph-hy3000-emmc.dts" "/target/linux/mediatek/dts/mt7981b-ph-hy3000-emmc.dts"
 cp -f "$GITHUB_WORKSPACE/dts/mt7981b-bt-r320-emmc.dts" "/target/linux/mediatek/dts/mt7981b-bt-r320-emmc.dts"
+cp -f "$GITHUB_WORKSPACE/dts/mt7981b-sl-3000-emmc.dts" "/target/linux/mediatek/dts/mt7981b-sl-3000-emmc.dts"
 cp -f "$GITHUB_WORKSPACE/dts/02_network" "/target/linux/mediatek/filogic/base-files/etc/board.d/02_network"
 
 echo "PH-HY3000和BT-R320 dts文件替换成功"
