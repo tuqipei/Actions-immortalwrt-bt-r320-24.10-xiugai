@@ -116,18 +116,3 @@ if [ -f "package/feeds/nas_luci/luci-app-quickstart/Makefile" ]; then
 else
     echo "ℹ️ 未找到 quickstart 插件的 Makefile，跳过修改"
 fi
-# 强制删除 Ruby 及其相关依赖包的安装脚本，防止被选中
-rm -rf feeds/packages/lang/ruby
-rm -rf feeds/packages/lang/golang
-
-# 在 .config 中强制禁用 Ruby 选项（双重保险）
-sed -i 's/CONFIG_PACKAGE_ruby=y/# CONFIG_PACKAGE_ruby is not set/' .config
-sed -i 's/CONFIG_PACKAGE_ruby-bigdecimal=y/# CONFIG_PACKAGE_ruby-bigdecimal is not set/' .config
-sed -i 's/CONFIG_PACKAGE_ruby-date=y/# CONFIG_PACKAGE_ruby-date is not set/' .config
-sed -i 's/CONFIG_PACKAGE_ruby-digest=y/# CONFIG_PACKAGE_ruby-digest is not set/' .config
-sed -i 's/CONFIG_PACKAGE_ruby-enc=y/# CONFIG_PACKAGE_ruby-enc is not set/' .config
-sed -i 's/CONFIG_PACKAGE_ruby-pstore=y/# CONFIG_PACKAGE_ruby-pstore is not set/' .config
-sed -i 's/CONFIG_PACKAGE_ruby-psych=y/# CONFIG_PACKAGE_ruby-psych is not set/' .config
-
-# 如果之前 libxcrypt 也报错，也可以顺手禁用了（只要你不跑 Python）
-sed -i 's/CONFIG_PACKAGE_libxcrypt=y/# CONFIG_PACKAGE_libxcrypt is not set/' .config
