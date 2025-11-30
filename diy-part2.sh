@@ -5,13 +5,6 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# =========================================================
-# 1. 优先修复 Golang 环境 (解决 Xray, Docker 等编译失败的关键)
-# =========================================================
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
-# 注意：25.x 分支可能对某些旧源码不兼容，建议用 22.x 或 master，或者根据你之前的成功经验保持 25.x
-# 如果你之前用 25.x 成功了，就保留 25.x
 
 # =========================================================
 # 2. 清理可能有问题的官方包 (Ruby, Docker 等)
