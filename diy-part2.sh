@@ -5,19 +5,6 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# 2. 清理冲突包 & 官方坑包
-# =========================================================
-# 双重保险：移除 feeds 里的 golang (配合 diy-part1.sh 使用)
-#rm -rf feeds/packages/lang/golang
-
-# 移除 Ruby, Docker 等
-#rm -rf feeds/packages/lang/ruby
-rm -rf feeds/packages/utils/docker
-rm -rf feeds/packages/utils/dockerd
-rm -rf feeds/packages/utils/containerd
-rm -rf feeds/packages/utils/runc
-rm -rf feeds/packages/utils/tini
-
 # =========================================================
 # 3. 克隆/替换第三方插件
 # =========================================================
@@ -82,12 +69,6 @@ echo "PH-HY3000和BT-R320 dts文件替换成功"
 # =========================================================
 # 5. 最终配置修正 (Sed 命令)
 # =========================================================
-
-# 强制禁用 Ruby 和 Docker (双重保险)
-sed -i 's/CONFIG_PACKAGE_ruby=y/# CONFIG_PACKAGE_ruby is not set/' .config
-sed -i 's/CONFIG_PACKAGE_docker=y/# CONFIG_PACKAGE_docker is not set/' .config
-sed -i 's/CONFIG_PACKAGE_dockerd=y/# CONFIG_PACKAGE_dockerd is not set/' .config
-sed -i 's/CONFIG_PACKAGE_luci-app-dockerman=y/# CONFIG_PACKAGE_luci-app-dockerman is not set/' .config
 
 # 启用 Docker 内核支持 (为 opkg 安装做准备)
 echo "CONFIG_PACKAGE_kmod-docker-internal=y" >> .config
